@@ -1,0 +1,31 @@
+{
+  "name": "bpmn-vue3-flowable",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@types/codemirror": "^5.60.17",
+    "@vue/runtime-dom": "^3.5.25",
+    "bpmn-js": "^18.9.1",
+    "codemirror": "^5.59.2",
+    "element-plus": "^2.12.0",
+    "vue": "^3.5.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vitejs/plugin-vue-jsx": "^5.1.2",
+    "@vue/compiler-sfc": "^3.1.2",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.5.0",
+    "highlight.js": "^10.5.0",
+    "prettier": "^2.2.1",
+    "sass": "^1.96.0",
+    "typescript": "^5.9.3",
+    "vite": "7.2.7"
+  }
+}

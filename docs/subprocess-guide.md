@@ -13,12 +13,12 @@
 显示规则:
 顶部流程路径导航栏（Breadcrumb）：悬浮与页面左上角（left：56px，top：10px）
 默认显示当前主流程名称（从 bpmn:process 的 name 获取）
-当用户进入子流程（通过 bpmn.js 自带的 “进入” 按钮展开 bpmn:SubProcess）时，自动追加子流程 ID/名称
+当用户进入子流程（通过 点击sub-process(collapsed)和Ad-hoc sub-process(collapsed)的进入按钮展开 bpmn:SubProcess）时，自动追加子流程 ID/名称
 路径格式：主流程 > 子流程1 > 子流程2
 交互行为
 点击路径中的任意流程项 → 跳转回该层级
 使用响应式栈 pathStack: Ref<ProcessPathItem[]> 管理路径
-监听bpmn.js conetextPad 内置“进入”按钮事假
+点击sub-process(collapsed)和Ad-hoc sub-process(collapsed) 的【open xxx】按钮进入子流程
 
 ### 二、“返回上一级”悬浮按钮
 显示规则
@@ -46,7 +46,7 @@
 项目使用 Vue 3（Composition API + <script setup>） + TypeScript
 已集成 bpmn.js v18（BpmnJS 类型可用）
 主流程 XML 已加载，bpmnModeler 实例已创建
-子流程在 BPMN XML 中以标准 <bpmn:subProcess> 形式存在（支持 collapsed 属性）
+子流程在 BPMN XML 中以标准 <bpmn:subProcess> 形式存在
 流程设计页面src/App.tsx
 ### 📦 技术要求
 通用
@@ -75,7 +75,6 @@ src/
 ###🚫 禁止行为
 ❌ 不要自定义 contextPadProvider（保留 bpmn.js 默认“进入”按钮）
 ❌ 不要修改 BPMN XML 结构（如添加 innerProcess）
-❌ 不要使用全局状态管理（Pinia/Vuex）
 ❌ 不要重复实现子流程展开逻辑
 
 ### 🧪 交互流程示例
@@ -90,4 +89,3 @@ src/
 审批子流程自动收起（图标变回小矩形）
 画布聚焦主流程
 返回按钮：隐藏
-

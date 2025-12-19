@@ -4,26 +4,26 @@
 ## 🎯 整体目标
 实现一个支持 子流程嵌套导航 的 BPMN 流程设计器，包含以下两个核心 UI 功能：
 
-顶部流程路径导航栏（Breadcrumb）：悬浮与页面左上角（left：10px，top：10px）
-左上角“返回上一级”悬浮按钮：悬浮与页面左上角（left：10px，to：30px）
+顶部流程路径导航栏（Breadcrumb）：悬浮与页面左上角（left：56px，top：10px）
+左上角“返回上一级”悬浮按钮：悬浮与页面左上角（left：10px，to：10px）
 两者协同工作，提供直观的多层级流程设计体验。
 
 ## 📌 功能需求详述
 ### 一、流程路径导航栏（Breadcrumb）
 显示规则:
-顶部流程路径导航栏（Breadcrumb）：悬浮与页面左上角（left：10px，top：10px）
+顶部流程路径导航栏（Breadcrumb）：悬浮与页面左上角（left：56px，top：10px）
 默认显示当前主流程名称（从 bpmn:process 的 name 获取）
 当用户进入子流程（通过 bpmn.js 自带的 “进入” 按钮展开 bpmn:SubProcess）时，自动追加子流程 ID/名称
 路径格式：主流程 > 子流程1 > 子流程2
 交互行为
 点击路径中的任意流程项 → 跳转回该层级
 使用响应式栈 pathStack: Ref<ProcessPathItem[]> 管理路径
-不自定义 contextPad，完全依赖 bpmn.js conetextPad 内置“进入”按钮
+监听bpmn.js conetextPad 内置“进入”按钮事假
 
 ### 二、“返回上一级”悬浮按钮
 显示规则
 仅当 pathStack.length > 1 时显示
-固定定位在页面左上角（left：10px，to：30px）
+固定定位在页面左上角（left：10px，top：10px）
 交互行为
 点击后：
 现在处于 pathStack[i] 节点，点击返回按钮后，进入 pathStack[i-1] 节点，并更新 pathStack
@@ -31,8 +31,8 @@
 ```css
 .bpmn-return-button {
   position: absolute;
-  left: 24px;
-  top: 24px;
+  left: 10px;
+  top: 10px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -65,28 +65,13 @@ interface ProcessPathItem {
 ### 📁 推荐文件结构
 ```sh
 src/
-├── components/
-│   └── useProcessBreadcrumb.ts     # 路径导航逻辑
-│   └── bpmn/
-│       ├── BpmnBreadcrumb.vue       # 路径导航栏组件
-│       └── BpmnReturnButton.vue     # 返回按钮组件
+├── components-/
+│   └── bpmn-breadcrumb/
+│       ├── useProcessBreadcrumb.ts  # 路径导航逻辑
+│       ├── BpmnBreadcrumb.tsx       # 路径导航栏组件
+│       └── BpmnReturnButton.tsx     # 返回按钮组件
 ```
-### 📥 组件 Props 定义
-BpmnBreadcrumb.vue
-```ts
-interface Props {
-  pathStack: ProcessPathItem[];
-  onGoToProcess: (index: number) => void;
-}
-```
-BpmnReturnButton.vue
-```ts
-interface Props {
-  bpmnModeler: BpmnJS | null;
-  pathStack: ProcessPathItem[];
-  onGoToParent: () => void; // 等价于 () => onGoToProcess(pathStack.length - 2)
-}
-```
+
 ###🚫 禁止行为
 ❌ 不要自定义 contextPadProvider（保留 bpmn.js 默认“进入”按钮）
 ❌ 不要修改 BPMN XML 结构（如添加 innerProcess）

@@ -45,9 +45,17 @@
 已集成 bpmn.js v18（BpmnJS 类型可用）
 主流程 XML 已加载，bpmnModeler 实例已创建
 子流程在 BPMN XML 中以标准 <bpmn:subProcess> 形式存在
+判断子流程展开逻辑，参考
+```ts
+    const eventBus = modeler.get('eventBus');
+    eventBus.on('root.set', function (e: any) {
+      console.log('element', e.element);
+    })
+
+```
 流程设计入口页面src/App.tsx
 ### 📦 技术要求
-所有逻辑封装在 可组合函数 useProcessBreadcrumb() 中
+所有逻辑封装在 useProcessBreadcrumb 中
 类型安全，避免 any（使用 bpmnModeler?.get(...) 安全调用）
 可使用 UI 库（如 Element Plus），也可以使用原生 HTML + CSS
 #### 路径栈数据结构

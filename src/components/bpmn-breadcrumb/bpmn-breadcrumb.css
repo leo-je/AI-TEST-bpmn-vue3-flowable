@@ -1,0 +1,64 @@
+.bpmn-breadcrumb {
+  position: fixed;
+  left: 56px;
+  top: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bpmn-breadcrumb-item {
+  color: #606266;
+  user-select: none;
+}
+
+.bpmn-breadcrumb-item-clickable {
+  color: #409eff;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.bpmn-breadcrumb-item-clickable:hover {
+  color: #66b1ff;
+  text-decoration: underline;
+}
+
+.bpmn-breadcrumb-separator {
+  margin: 0 8px;
+  color: #c0c4cc;
+}
+
+.bpmn-return-button {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  z-index: 999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.bpmn-return-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.bpmn-return-button:active {
+  transform: scale(0.95);
+}
+

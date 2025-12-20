@@ -69,6 +69,9 @@ src/
 │       └── BpmnReturnButton.tsx     # 返回按钮组件
 ```
 
+### 测试方法
+必须满足要求：进入子流程，导航栏更新，并可点击，切换到对应设计视图，并显示返回按钮，点击可回到上层。请在每次修改后都要重新测试，确保必须实现要求的功能。use chrome-devtools-mcp
+
 ###🚫 禁止行为
 ❌ 不要自定义 contextPadProvider contextPad
 ❌ 不要修改 BPMN XML 结构（如添加 innerProcess）

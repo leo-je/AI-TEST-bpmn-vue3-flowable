@@ -70,6 +70,7 @@ src/
 ```
 
 ### 测试方法
+新增开始节点，再新增task元素，在task的contextpad中将task元素切换为sub-process(collapsed)，点击sub-process(collapsed)的“open 子元素id”按钮,进入子流程设计界面
 必须满足要求：进入子流程，导航栏更新，并可点击，切换到对应设计视图，并显示返回按钮，点击可回到上层。请在每次修改后都要重新测试，确保必须实现要求的功能。use chrome-devtools-mcp,use context7
 
 ###🚫 禁止行为
